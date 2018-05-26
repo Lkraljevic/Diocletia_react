@@ -4,13 +4,13 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <img src="./images/logo.png" class="logo sticky" alt="" />
-                <div class="top-background sticky"></div>
+                <img src="./images/logo.png" className="logo sticky" alt="" />
+                <div className="top-background sticky"></div>
                 < DesktopNav />
 
                 <h1 className="header__title">
-                    <div class="header__title--small">Made in Dalmatia</div>
-                    <img src="./images/header.png" alt="" />
+                    <div className="header__title--small">Made in Dalmatia</div>
+                    <img src="/images/header.png" alt="" />
                     <div className="header__title--small">the Online Store for Women's Shoes</div>
                 </h1>
                 <div className="header__controls"></div>

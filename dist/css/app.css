@@ -1117,12 +1117,12 @@ textarea{
 }
 @media screen and (min-width:1024px){
     .item-form__title--block{
-        margin-left:65%;
+        /* margin-left:65%; */
         margin-bottom:5px;
-        -webkit-flex-basis:35%;
+        /* -webkit-flex-basis:35%;
         -ms-flex-preferred-size:35%;
         flex-basis:35%;
-        padding-left:5px;
+        padding-left:5px; */
         margin-top:0
     }
     .item__controls{
@@ -2278,11 +2278,6 @@ header>.slider{
 
 
 
-
-
-
-
-
 /* Modal pages */
 .modal {
     z-index: 3;
@@ -2828,6 +2823,10 @@ div.close:focus {
 .purple path.c4 {
   fill: #784f9c;
   stroke: #784f9c;
+}
+
+.strips.active path {
+    opacity: 0.6;
 }
 
 .sticky_header .nav--desktop.sticky, .sticky_header .logo.sticky {

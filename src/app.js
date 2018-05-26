@@ -4,9 +4,11 @@ import { browserHistory } from 'react-router';
 
 import HomePage from './pages/homepage';
 import ModelsPage from './pages/models';
+
 import Header from './components/header';
 import Footer from './components/footer';
-// Header
+
+import Cart from './pages/cart';
 
 
 class App extends Component {
@@ -16,8 +18,9 @@ class App extends Component {
           <div>
             <Header />
             <Route name="home" exact path="/" component={HomePage} />
-            <Route name="models" path="/models/:modelId" component={ModelsPage} />
+            <Route name="models" path="/models/:modelID" component={ModelsPage} />
             <Footer />
+            <Cart />
             </div>
       </Router>
     )

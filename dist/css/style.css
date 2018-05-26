@@ -1117,12 +1117,12 @@ textarea{
 }
 @media screen and (min-width:1024px){
     .item-form__title--block{
-        margin-left:65%;
+        /* margin-left:65%; */
         margin-bottom:5px;
-        -webkit-flex-basis:35%;
+        /* -webkit-flex-basis:35%;
         -ms-flex-preferred-size:35%;
         flex-basis:35%;
-        padding-left:5px;
+        padding-left:5px; */
         margin-top:0
     }
     .item__controls{
