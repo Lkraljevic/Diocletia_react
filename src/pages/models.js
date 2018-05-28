@@ -21,6 +21,8 @@ class ModelsPage extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
+
+        // nextProps.location.hash
         var activeModel = {};
         switch(nextProps.match.params.modelID) {
             case 'model-I':
@@ -46,7 +48,8 @@ export default ModelsPage;
 class ModelCustomisation extends Component {
     constructor(props) {
         super(props)
-        this.onOrder = this.onOrder.bind(this);
+        this.onAddToCart = this.onAddToCart.bind(this);
+        this.modelView = React.createRef();
     }
     render() {
         // Applay some logic for custom themese here
@@ -54,10 +57,29 @@ class ModelCustomisation extends Component {
             <article className="container item">
                 <p className="item__about">Diocletia shoes are handmade leather shoes with a „dash of history“. Playing with the colors and traditional style, these Diocletia's shoes are designed to fulfill the demands of contemporary woman and her lifestyle.</p>
                 <ModelInfo />
-                <ModelView {...this.props}/>
-                <SizeForm  onOrder={this.onOrder}/>
+                <ModelView ref={this.modelView} {...this.props}/>
+                <SizeForm  onAddToCart={this.onAddToCart}/>
             </article>
-        )}
+    )}
+
+    onAddToCart(size) {
+        console.log("This on order");
+        var order = {
+            code: this.modelView.current.state.code,
+            style: this.modelView.current.state.style,
+            price:
+            quantity: 1, 
+        }
+        var item = {
+            code: model.code,
+            id: this._guid(),
+            name: model.name,
+            quantity: 1, 
+            size: size,
+            colors: model.currentTheme,
+            price: model.sale_price
+          }
+    }
 }
 
 class ModelView extends Component {
@@ -67,7 +89,6 @@ class ModelView extends Component {
             _activeColor: null,
             _activeStraps : null,
             code: null,
-            size: null,
             style: null,
         }
 
@@ -248,12 +269,12 @@ class SizeForm extends Component {
                     <option value="40">40</option>
                     <option value="41">41</option>
                 </select>
-                <button class="button--gold" id="add_cart" onClick={this.props.orderNow.bind(this)}>Order Now</button>
+                <button class="button--gold" id="add_cart" onClick={this.onAddToCart.bind(this)}>Order Now</button>
             </div>
         </div>
         )
     }
-    orderNow() {
+    onAddToCart() {
         // Validation
         this.props.onOrder();
     }
