@@ -3237,6 +3237,9 @@ div#model {
     margin-bottom: 0;
     margin-top: 20px;
 }
+.item__color.active {
+    border: 2px solid #d3ac46;
+}
 .item__view {
     background: none;
 }
