@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import { browserHistory } from 'react-router';
+//import { browserHistory } from 'react-router';
 
 // import {hr_HR, en_US} from './pages/lang';
 import HomePage from './pages/homepage';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 //import { slide as Menu } from 'react-burger-menu'
-import BurgerMenu from 'react-burger-menu';
-import classNames from 'classnames';
+
+
 
 class Header extends Component {
     render() {
