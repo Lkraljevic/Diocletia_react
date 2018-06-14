@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+//import { slide as Menu } from 'react-burger-menu'
+import BurgerMenu from 'react-burger-menu';
+import classNames from 'classnames';
+
 class Header extends Component {
     render() {
+        let menuStyle = {
+            display: this.props.sideMenu.showSlideMenu ? 'none':''
+        }
+
         return (
             <header>
                 <img src="./images/logo.png" className="logo sticky" alt="" />
                 <div className="top-background sticky"></div>
-                < DesktopNav {...this.props}/>
+                <DesktopNav {...this.props}/>
+
+                <nav className="nav--mobile" style={menuStyle}>
+                    <div className="nav-mobile__icon js-menu" onClick = {this.props.sideMenu.toggleSideMenu}></div>
+                </nav>
+               
 
                 <h1 className="header__title">
                     <div className="header__title--small">Made in Dalmatia</div>
@@ -25,7 +38,7 @@ class Header extends Component {
                     </ul>
 
                 </div>
-            </header>
+             </header>
         )
     }
 }
@@ -35,7 +48,7 @@ export default Header;
 class DesktopNav extends Component {
     render() {
         return (
-            <nav className="container nav--desktop sticky">
+            <nav className="desktop-menu container nav--desktop sticky">
                     <Link to='/' className="link-home nav__link">Home</Link>
                     <Link to='/about/' className="link-about disabled nav__link">About us</Link>
                     <Link to='/contact/' className="link-contact nav__link">Contact</Link>
@@ -43,10 +56,12 @@ class DesktopNav extends Component {
                     <Link to='/models/model-I/' className="link-products nav__link">Products</Link>
                     <Link to='/sizeguide/' className="link-sizeguide nav__link">Size guide</Link>
                     <a className="link-cart nav__link">
-                        <button id="cart-notification" className={this.props.cartSize? "new-item": "empty-cart"} data-cart={this.props.cartSize} onClick={()=>{this.props.toggleCart();}}>
+                        <button id="cart-notification" className={this.props.cart.cartSize? "new-item": "empty-cart"} data-cart={this.props.cart.cartSize} onClick={()=>{this.props.cart.toggleCart();}}>
                             <img src="../images/icons/cart_icon.png" alt=""/> Cart
                         </button>
                     </a>
                 </nav>
     )}
 }
+
+

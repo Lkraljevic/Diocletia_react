@@ -52,6 +52,7 @@ class ModelsPage extends Component {
         this.props.addToCart(this.state.activeModel, size, 1)
     }
 
+    // @Luka: This loads Model from URL, and loads theme if it is defined by #hash
     static getDerivedStateFromProps(nextProps, prevState) {
 
         // nextProps.location.hash

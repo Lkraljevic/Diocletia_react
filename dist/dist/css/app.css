@@ -2618,20 +2618,6 @@ input.promo-code::placeholder{
     opacity: 0.9;
 }
 
-
-div.error {
-    border: 2px solid red;
-    padding: 5px;
-    border-radius: 5px;
-}
-p.error {
-    text-align: center;
-    padding-top: 5px;
-    color: red;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 /* The Close Button */
 div.close {
     color: #aaaaaa;
@@ -2654,6 +2640,20 @@ div.close:focus {
     padding-right: 45px;
     text-align: center;
     margin-top: 10px;
+}
+
+
+div.error {
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 5px;
+}
+p.error {
+    text-align: center;
+    padding-top: 5px;
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 /* GENERAL */
@@ -2839,8 +2839,9 @@ div.close:focus {
   stroke: #784f9c;
 }
 
-.strips.active path {
-    opacity: 0.6;
+.strips.active.red path {
+  fill: red !important;
+  stroke: red !important;
 }
 
 .sticky_header .nav--desktop.sticky, .sticky_header .logo.sticky {
@@ -3653,140 +3654,3 @@ span.nav-close:before {
     100% { opacity: 1; animation-timing-function: ease-out; }
 }
 
-
-
-
-/* 
-
-.shadow.shadow--cart.modal.modal-hidden ,
-.shadow.shadow--cart.modal  {
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
-}
-
-.shadow.shadow--cart.modal  {
-	-webkit-animation-name: anim-open;
-	animation-name: anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-}
-
-.shadow.shadow--cart.modal.modal-hidden  {
-	-webkit-animation-name: anim-close;
-	animation-name: anim-close;
-}
-
-@-webkit-keyframes anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); }
-}
-
-@keyframes anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
-}
-
-@-webkit-keyframes anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); }
-}
-
-@keyframes anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
-} */
-
-/*           */
-
-.shadow.shadow--cart.modal.modal-hidden,
-.shadow.shadow--cart.modal {
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
-}
-
-.shadow.shadow--cart.modal {
-	-webkit-animation-name: anim-open;
-	animation-name: anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-}
-
-.shadow.shadow--cart.modal.modal-hidden{
-	-webkit-animation-name: anim-close;
-	animation-name: anim-close;
-}
-
-@-webkit-keyframes anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); }
-}
-
-@keyframes anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
-}
-
-@-webkit-keyframes anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); }
-}
-
-@keyframes anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
-}
-
-.sidenav-wrapper {
-    height: 100%;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    background-color: rgba(255,255,255,.95);
-    /* background-color: red; */
-    overflow-x: hidden;
-    padding-top: 60px;
-    z-index: 5;
-}
-.sidenav {
-    transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-}
-.sidenav-wrapper .closebtn {
-    position: fixed;
-    top: 35px;
-    right: 50px;
-    font-size: 50px;
-    color: #e2c885;
-}
-
-.sidenav-wrapper.closed {
-    display:none;
-}
-
-.sidenav-wrapper.open,
-.sidenav-wrapper.closed {
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
-}
-
-.sidenav-wrapper.open {
-	-webkit-animation-name: anim-open;
-	animation-name: anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-}
-.sidenav-wrapper.closed{
-	-webkit-animation-name: anim-close;
-    animation-name: anim-close;
-}
