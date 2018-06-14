@@ -41,8 +41,8 @@ class App extends Component {
       toggleSideMenu: this.toggleSideMenu,
       showSlideMenu: this.state.showSlideMenu
     }
-    
-    let path = 'https://diocletia.hr/Diocletia_react/dist';
+
+    let path = (window.location.origin == "https://diocletia.hr") ? "/Diocletia_react/dist":"";
     return (
       
       <Router>
