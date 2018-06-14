@@ -41,7 +41,10 @@ class App extends Component {
       toggleSideMenu: this.toggleSideMenu,
       showSlideMenu: this.state.showSlideMenu
     }
+    
+    let path = 'https://diocletia.hr/Diocletia_react/dist';
     return (
+      
       <Router>
           <div>
             <Header lang = {this.props.lang} 
@@ -50,10 +53,10 @@ class App extends Component {
              />
 
 
-            <Route name="home" exact path="/" render={(props)=>
+            <Route name="home" exact path={path+"/"} render={(props)=>
             <HomePage {...props} />} />
 
-            <Route name="models" path="/models/:modelID" render={(props)=>
+            <Route name="models" path={path+"/models/:modelID"} render={(props)=>
               <ModelsPage {...props} addToCart={this.addToCart}/>
               }/>
 

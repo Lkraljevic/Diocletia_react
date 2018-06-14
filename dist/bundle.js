@@ -24498,6 +24498,8 @@ var App = function (_Component) {
         toggleSideMenu: this.toggleSideMenu,
         showSlideMenu: this.state.showSlideMenu
       };
+
+      var path = 'https://diocletia.hr/Diocletia_react/dist';
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
@@ -24508,10 +24510,10 @@ var App = function (_Component) {
             cart: cart,
             sideMenu: sideMenu
           }),
-          _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: '/', render: function render(props) {
+          _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: path + "/", render: function render(props) {
               return _react2.default.createElement(_homepage2.default, props);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { name: 'models', path: '/models/:modelID', render: function render(props) {
+          _react2.default.createElement(_reactRouterDom.Route, { name: 'models', path: path + "/models/:modelID", render: function render(props) {
               return _react2.default.createElement(_models2.default, _extends({}, props, { addToCart: _this2.addToCart }));
             } }),
           _react2.default.createElement(_footer2.default, { toggleCart: this.toggleCart }),
