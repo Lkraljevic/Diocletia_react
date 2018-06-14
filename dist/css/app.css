@@ -2618,6 +2618,20 @@ input.promo-code::placeholder{
     opacity: 0.9;
 }
 
+
+div.error {
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 5px;
+}
+p.error {
+    text-align: center;
+    padding-top: 5px;
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 /* The Close Button */
 div.close {
     color: #aaaaaa;

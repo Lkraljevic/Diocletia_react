@@ -6,7 +6,7 @@ class Header extends Component {
             <header>
                 <img src="./images/logo.png" className="logo sticky" alt="" />
                 <div className="top-background sticky"></div>
-                < DesktopNav />
+                < DesktopNav {...this.props}/>
 
                 <h1 className="header__title">
                     <div className="header__title--small">Made in Dalmatia</div>
@@ -36,15 +36,15 @@ class DesktopNav extends Component {
     render() {
         return (
             <nav className="container nav--desktop sticky">
-                    <a className="link-home nav__link">Home</a>
-                    <a className="disabled link-about nav__link">About us</a>
-                    <a className="link-contact nav__link">Contact</a>
-                    <a className="link-home nav__link nav__link--logo"></a>
-                    <a className="link-products nav__link">Products</a>
-                    <a className="link-sizeguide nav__link">Size guide</a>
-                    <a className="link-cart nav__link" id="cart-btn">
-                        <button id="cart-notification" className="empty-cart" data-cart="0">
-                            <img src="../images/icons/cart_icon.png" alt="" /> Cart
+                    <Link to='/' className="link-home nav__link">Home</Link>
+                    <Link to='/about/' className="link-about disabled nav__link">About us</Link>
+                    <Link to='/contact/' className="link-contact nav__link">Contact</Link>
+                    <Link to='/home/' className="link-home nav__link nav__link--logo"></Link>
+                    <Link to='/models/model-I/' className="link-products nav__link">Products</Link>
+                    <Link to='/sizeguide/' className="link-sizeguide nav__link">Size guide</Link>
+                    <a className="link-cart nav__link">
+                        <button id="cart-notification" className={this.props.cartSize? "new-item": "empty-cart"} data-cart={this.props.cartSize} onClick={()=>{this.props.toggleCart();}}>
+                            <img src="../images/icons/cart_icon.png" alt=""/> Cart
                         </button>
                     </a>
                 </nav>
