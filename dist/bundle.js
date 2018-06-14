@@ -24499,7 +24499,7 @@ var App = function (_Component) {
         showSlideMenu: this.state.showSlideMenu
       };
 
-      var path = 'https://diocletia.hr/Diocletia_react/dist';
+      var path = window.location.origin == "https://diocletia.hr" ? "/Diocletia_react/dist" : "";
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
