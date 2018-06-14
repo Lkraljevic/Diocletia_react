@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+let path = (window.location.origin == "https://diocletia.hr") ? "/Diocletia_react/dist":"";
 
 class ModelSelection extends Component {
     constructor(props) {
@@ -8,19 +9,19 @@ class ModelSelection extends Component {
             models:[{
                 code:'M1',
                 name: 'Model I',
-                url: '/models/model-I/'
+                url: path + '/models/model-I/'
             },{
                 code:'M2',
                 name: 'Model II',
-                url: '/models/model-II/'
+                url: path + '/models/model-II/'
             },{
                 code:'M3',
                 name: 'Model III',
-                url: '/models/model-III/'
+                url: path + '/models/model-III/'
             },{
                 code:'M4',
                 name: 'Model IV',
-                url: '/models/model-IV/'
+                url: path + '/models/model-IV/'
             }],
             activeModel: props.activeModel
         }
