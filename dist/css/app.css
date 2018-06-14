@@ -3743,9 +3743,12 @@ span.nav-close:before {
 .sidenav-wrapper {
     height: 100%;
     position: absolute;
-    top: 30px;
+    /* top: 30px;
     left: 30px;
-    right: 30px;
+    right: 30px; */
+    top: 0;
+    left: 0;
+    right: 0;
     background-color: rgba(255,255,255,.95);
     /* background-color: red; */
     overflow-x: hidden;
