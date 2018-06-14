@@ -9,7 +9,7 @@ class Cart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hidden: true,
+            hidden: !props.show,
             items: new Map(),
             amount: {
                 total: 0,
@@ -29,6 +29,8 @@ class Cart extends Component {
         }
 
         this.loadCart();
+
+        props.onCartUpdate(this.state);
     }
     render() {
         var className = 'shadow shadow--cart modal'
@@ -38,8 +40,8 @@ class Cart extends Component {
         <div className={className} id="cart-modal">
             <div className="container cart">
             <div className="cart__controls">
-                <a href="#" className="cart__back">Continue Shopping</a>
-                <a href="#" className="cart__close"></a>
+                <a href="#" className="cart__back" onClick={this.hideCart.bind(this)}>Continue Shopping</a>
+                <a href="#" className="cart__close" onClick={this.hideCart.bind(this)}></a>
             </div>
             
             <div className="card__body">
@@ -92,8 +94,8 @@ class Cart extends Component {
           name: model.name,
           quantity: quantity, 
           size: size,
-          colors: model.currentTheme,
-          price: model.sale_price
+          colors: model.colorStyle,
+          price: model.price
         }
         
         var items = this.state.items;
@@ -119,9 +121,7 @@ class Cart extends Component {
             this.saveCart();
         })
 
-    }
-     
-
+    }  
 
     loadCart() {
         if (typeof(Storage) !== "undefined") {
@@ -174,6 +174,14 @@ class Cart extends Component {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
+    hideCart(e) {
+        e.preventDefault();
+        this.props.toggleCart();
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {hidden: !nextProps.shown}
+    }
 }
 
 
