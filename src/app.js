@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 //import { browserHistory } from 'react-router';
 
 // import {hr_HR, en_US} from './pages/lang';
@@ -29,7 +29,6 @@ class App extends Component {
     this.toggleCart = this.toggleCart.bind(this);
 
     // SIDEBAR
-    this.sidebar = React.createRef();
     this.toggleSideMenu = this.toggleSideMenu.bind(this);
   }
   render() {
@@ -64,10 +63,10 @@ class App extends Component {
 
             <Cart onCartUpdate = {this.cartUpdate} shown={this.state.showCart} ref={this.cart} toggleCart={this.toggleCart} />
 
-            <SlideMenu ref={this.sidebar} 
+            <SlideMenu {...this.props} 
             shown={this.state.showSlideMenu} 
             toggleSideMenu={this.toggleSideMenu} 
-            cart ={cart}  /> />
+            cart ={cart}  />
             </div>
       </Router>
     )
@@ -75,6 +74,7 @@ class App extends Component {
   
   addToCart(modelItem, shoeSize, quantity) {
     this.cart.current.addItem(modelItem, shoeSize, quantity);
+    this.toggleCart();
   }
 
   toggleCart() {

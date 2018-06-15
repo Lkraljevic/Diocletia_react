@@ -3769,6 +3769,7 @@ span.nav-close:before {
     right: 50px;
     font-size: 50px;
     color: #e2c885;
+    z-index: 1;
 }
 
 .sidenav-wrapper.closed {
@@ -3792,4 +3793,28 @@ span.nav-close:before {
 .sidenav-wrapper.closed{
 	-webkit-animation-name: anim-close;
     animation-name: anim-close;
+}
+.sidenav-wrapper button {
+    position: relative;
+}
+.sidenav-wrapper button:after {
+    content: attr(data-cart);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    right: -10px;
+    background-color: #f5ebd8;
+    position: absolute;
+    color: #5c5a54;
+    line-height: 18px;
+    font-size: 16px;
+    -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1.25s infinite cubic-bezier(9.66, 0, 0, 1);
+    box-shadow: 0 0 0 0 rgb(211, 172, 70);
+    border: 1px solid #d3ac46;
 }

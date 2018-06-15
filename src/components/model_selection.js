@@ -22,13 +22,12 @@ class ModelSelection extends Component {
                 code:'M4',
                 name: 'Model IV',
                 url: path + '/models/model-IV/'
-            }],
-            activeModel: props.activeModel
+            }]
         }
     }
     render() {
         var chooseModels = this.state.models.map(model => {
-            if(!this.state.activeModel || this.state.activeModel.code != model.code )
+            if(!this.props.activeModel || this.props.activeModel.code != model.code )
             return <ModelItem code={model.code} name={model.name} url={model.url}/>
         });
         return (

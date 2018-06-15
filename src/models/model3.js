@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 class Model3 extends Component {
     constructor(props) {
         super(props)
+        this.El = React.createRef();
 
     }
     render() {
@@ -11,7 +12,7 @@ class Model3 extends Component {
          var classList = this.applyClassName();
         
         return(
-            <svg id="model-III" className="M3" viewBox="450 0 2100 2100">
+            <svg id="model-III" className="M3" viewBox="450 0 2100 2100" ref={this.El}>
 
             <g id="root">
                 <g className={"strips "+classList.l[0]} onClick = {this.activateStripe.bind(this,{l:0})}> 
@@ -543,8 +544,8 @@ class Model3 extends Component {
     }
 
     activateStripe(strObj) {
-
-        this.props.onStrapSelection(strObj); 
+        if(this.props.onStrapSelection)
+            this.props.onStrapSelection(strObj); 
     }
 
 
@@ -581,16 +582,21 @@ class Model3 extends Component {
             
             this.props.colorStyle.l.forEach((color, i)=>{
                 
-                classList.l[i] = ((this.props.activeStraps.l[i])? 'active ':'') + this.colorParser(color);  
+                classList.l[i] = ((this.props.activeStraps && this.props.activeStraps.l[i])? 'active ':'') + this.colorParser(color);  
             })
             
             this.props.colorStyle.r.forEach((color, i)=>{
-                classList.r[i] = ((this.props.activeStraps.r[i])? 'active ':'') + this.colorParser(color);
+                classList.r[i] = ((this.props.activeStraps && this.props.activeStraps.r[i])? 'active ':'') + this.colorParser(color);
             })
         }
         return classList;
     }
 
+    componentDidMount() {
+        
+        if(this.El.current)
+            window.scrollTo(0, this.El.current.parentNode.offsetTop);   
+    }
 
 }
 

@@ -35,7 +35,7 @@ class ModelsPage extends Component {
                 lang = {this.props.lang}
                 />
 
-                <ModelSelection lang = {this.props.lang} />
+                <ModelSelection activeModel={this.state.activeModel} />
             </div>
         )
     }
@@ -112,6 +112,8 @@ class ModelView extends Component {
             </article>
     )}
 
+    
+
 }
 
 class ModelCustomisation extends Component {
@@ -125,6 +127,7 @@ class ModelCustomisation extends Component {
         // Callbacks
         this.activateColor = this.activateColor.bind(this);
         this.updateStraps = this.updateStraps.bind(this);
+        
 
     }
 
@@ -232,6 +235,7 @@ class ModelCustomisation extends Component {
         
         return {code, colorStyle, _activeStraps, _activeColor};
     }
+
 }
 
 class SizeForm extends Component {
@@ -260,11 +264,11 @@ class SizeForm extends Component {
             <div className="item__controls">
             <h4 className="item-form__title item-form__title--block">Enter your measurement</h4>
             <div className={(this.state.error ? "error " : "") + "item__form"}>
-                <input type="text" value={this.state.size1} name="s1" placeholder="1 - Foot lenght" onChange={this.handleInputChange}/>
-                <input type="text" value={this.state.size2} name="s2" placeholder="2 - Ball circumference" onChange={this.handleInputChange}/>
-                <input type="text" value={this.state.size3} name="s3" placeholder="3 - Instep circumference" onChange={this.handleInputChange}/>
-                <input type="text" value={this.state.size4} name="s4" placeholder="4 - Heel girth" onChange={this.handleInputChange}/>
-                <input type="text" value={this.state.size5} name="s5" placeholder="5 - Ankle girth" onChange={this.handleInputChange}/>    
+                <input type="text" value={this.state.size1} name="size1" placeholder="1 - Foot lenght" onChange={this.handleInputChange}/>
+                <input type="text" value={this.state.size2} name="size2" placeholder="2 - Ball circumference" onChange={this.handleInputChange}/>
+                <input type="text" value={this.state.size3} name="size3" placeholder="3 - Instep circumference" onChange={this.handleInputChange}/>
+                <input type="text" value={this.state.size4} name="size4" placeholder="4 - Heel girth" onChange={this.handleInputChange}/>
+                <input type="text" value={this.state.size5} name="size5" placeholder="5 - Ankle girth" onChange={this.handleInputChange}/>    
             </div>
             <p className="link-sizeguide item-form__about size-guide-link" style={{textDecoration: 'underline', cursor:'pointer'}}>
                 Size guide instructions for each length and girth measurments.</p>
@@ -317,14 +321,7 @@ class SizeForm extends Component {
                 "Simply select your standard size and we'll get started on your DIOCLETIA shoes right away!"
             ]
             });
-        }
-
-
-
-
-
-
-        
+        }        
     }
 
     handleInputChange(event) {
