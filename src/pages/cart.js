@@ -25,7 +25,8 @@ class Cart extends Component {
                 value: 0,
                 quantity: 0,
                 totalDiscount: 0
-            }
+            },
+            requestFormHidden: true
         }
 
         this.loadCart();
@@ -33,6 +34,8 @@ class Cart extends Component {
         props.onCartUpdate(this.state);
 
         this.removeItem = this.removeItem.bind(this);
+        this.toggleRequestForm = this.toggleRequestForm.bind(this);
+        
     }
     render() {
         var className = 'shadow shadow--cart modal'
@@ -42,19 +45,18 @@ class Cart extends Component {
             <div className={className} id="cart-modal">
                 <div className="container cart">
                     <div className="cart__controls">
-                        <a href="#" className="cart__back" onClick={this.hideCart.bind(this)}>Continue Shopping</a>
-                        <a href="#" className="cart__close" onClick={this.hideCart.bind(this)}></a>
+                        <a href="#" className="cart__back" onClick={this.props.toggleCart}>Continue Shopping</a>
+                        <a href="#" className="cart__close" onClick={this.props.toggleCart}></a>
                     </div>
-
-                    <div className="card__body">
-                        <div className="empty-cart-overlay"></div>
-                        <CartTable onRemove={this.removeItem}
+                    {
+                        this.state.requestFormHidden?
+                        <CartBody onRemove={this.removeItem}
                             amount={this.state.amount}
                             discount={this.state.discount}
-                            items={this.state.items} />
-                        <CartButtons />
-                    </div>
-                    <CartRequestForm />
+                            items={this.state.items} 
+                            toggleRequestForm={this.toggleRequestForm}/>:
+                         <CartRequestForm  toggleRequestForm={this.toggleRequestForm}/>
+                    }
                 </div>
             </div>);
     }
@@ -164,17 +166,31 @@ class Cart extends Component {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
-    hideCart(e) {
-        e.preventDefault();
-        this.props.toggleCart();
+    toggleRequestForm() {
+        this.setState((prevState)=> {
+            return {requestFormHidden: !prevState.requestFormHidden}
+        });
     }
-
     static getDerivedStateFromProps(nextProps, prevState) {
-        return { hidden: !nextProps.shown }
+        return { hidden: !nextProps.shown, requestFormHidden: true }
     }
 }
 
 
+const CartBody = (props={}) => (
+    <div className="card__body">
+        {
+            !props.items.size ? 
+            <div className="empty-cart-overlay"></div>:
+            <div>
+                <CartTable {...props}/>
+                <CartButtons {...props}/>
+            </div>
+        }
+        
+        
+    </div>
+)
 
 class CartTable extends Component {
     render() {
@@ -195,7 +211,7 @@ class CartTable extends Component {
         return (
             <table className="cart__table" id="cart-table">
                 <tr className="cart_header">
-                    <th>My Cart ({this.props.items.length})</th>
+                    <th>My Cart ({this.props.items.size})</th>
                     <th>Price</th>
                     <th>Qty</th>
                     <th>Total</th>
@@ -315,7 +331,6 @@ class CartItem extends Component {
     }
 }
 
-
 const CartButtons = (props = {}) => (
     <div className="cart__buttons">
         <div className="discount-form">
@@ -325,7 +340,7 @@ const CartButtons = (props = {}) => (
             </div>
         </div>
         <div>
-            <button id="cart-sendRequest">Send Request</button>
+            <button id="cart-sendRequest" onClick={ props.toggleRequestForm }> Send Request</button>
         </div>
         <div>
             <div id="paypal-button"></div>
@@ -335,9 +350,14 @@ const CartButtons = (props = {}) => (
 
 
 class CartRequestForm extends Component {
+    constructor(props) {
+        super(props)
+
+        this.sendRequest = this.sendRequest.bind(this);
+    }
     render() {
         return(
-            <div className="cart_request_form hidden">
+            <div className="cart_request_form">
                         <h2 className="cart-form__title">Shooping cart request! Drop us a few lines :)</h2>
                         <form className="container cart-form" name="cart-form" id="cart-form">
                             <input type="text" name="name" className="" placeholder="Name:" required="" />
@@ -347,10 +367,10 @@ class CartRequestForm extends Component {
 
                             <div id="recaptcha" className="g-recaptcha" data-sitekey="6LeHJVcUAAAAAMuPh8-LQHuc7cxCP-TCBzEfpUuK" data-callback="cart_onSubmitRequest" data-size="invisible"></div>
                             <div className="form-buttons">
-                                <button id="card-send-request">
+                                <button id="card-send-request" onClick={this.sendRequest}>
                                     Send Request
                             </button>
-                                <div id="cart-request-cancel">
+                                <div id="cart-request-cancel"  onClick={ this.props.toggleRequestForm }>
                                     Cancel
                             </div>
                             </div>
@@ -358,9 +378,48 @@ class CartRequestForm extends Component {
                     </div>
         )
     }
+
+    sendRequest() {
+
+    }
 }
 
 
 
 
 export default Cart;
+
+
+
+
+
+class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  }

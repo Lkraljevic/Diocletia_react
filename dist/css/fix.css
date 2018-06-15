@@ -128,22 +128,19 @@ input.promo-code::placeholder{
 }
 
 .empty-cart-overlay {
-    display: none;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 10;
-    background-image: url(../images/empty_cart.png);
+    background-image: url(../images/empty-cart.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     min-height: 300px;
 }
-.cart-empty .empty-cart-overlay {
-    display: block;
-}
+
 .cart-empty .cart__table, .cart-empty .cart__buttons {
     display: none;
 }
