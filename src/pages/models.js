@@ -367,11 +367,14 @@ class ColorPalete extends Component {
                 <a className={"item__color"+((this.props.activeColor=="r1")?" active":"")} data-color="red" style={{backgroundColor: 'red'}} href="#" onClick={this.activateColor.bind(this,"r1")}></a>
                 <a className={"item__color"+((this.props.activeColor=="g1")?" active":"")} data-color="green_light" style={{backgroundColor: '#1aa51a'}} href="#" onClick={this.activateColor.bind(this,"g1")}></a>
                 <a className={"item__color"+((this.props.activeColor=="c1")?" active":"")} data-color="crimson" style={{backgroundColor: '#af1111'}} href="#" onClick={this.activateColor.bind(this,"c1")}></a>
+                <a className={"item__color"+((this.props.activeColor=="o1")?" active":"")} data-color="royalblue" style={{backgroundColor: '#082bdd'}} href="#" onClick={this.activateColor.bind(this,"b2")}></a>
                 <a className={"item__color"+((this.props.activeColor=="y1")?" active":"")} data-color="yellow" style={{backgroundColor: '#eadc6d'}} href="#" onClick={this.activateColor.bind(this,"y1")}></a>
                 <a className={"item__color"+((this.props.activeColor=="c2")?" active":"")} data-color="cyclamen" style={{backgroundColor: '#ce3a77'}} href="#" onClick={this.activateColor.bind(this,"c2")}></a>
                 <a className={"item__color"+((this.props.activeColor=="g2")?" active":"")} data-color="green_dark" style={{backgroundColor: '#156915'}} href="#" onClick={this.activateColor.bind(this,"g2")}></a>
                 <a className={"item__color"+((this.props.activeColor=="p1")?" active":"")} data-color="purple" style={{backgroundColor: '#840484'}} href="#" onClick={this.activateColor.bind(this,"p1")}></a>
                 <a className={"item__color"+((this.props.activeColor=="o1")?" active":"")} data-color="orange" style={{backgroundColor: '#fd9914'}} href="#" onClick={this.activateColor.bind(this,"o1")}></a>
+                <a className={"item__color"+((this.props.activeColor=="o1")?" active":"")} data-color="skyblue" style={{backgroundColor: '#0bb7e7'}} href="#" onClick={this.activateColor.bind(this,"b1")}></a>
+                
             </div>
         )
     }

@@ -2040,7 +2040,9 @@ class Model2 extends Component {
              'y1':'yellow',
              'c1':'crimson',
              'c2':'cyclamen',
-             'p1':'purple'
+             'p1':'purple',
+             'b1': 'skyblue',
+             'b2': 'royalblue'
            } 
     
          var colors_name = colors_code.map(function(color_code) {
